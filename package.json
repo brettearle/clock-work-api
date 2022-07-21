@@ -1,0 +1,22 @@
+{
+  "name": "clock-work-api",
+  "version": "1.0.0",
+  "description": "This is the beginning of a API for management of a table top role play game",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "PORT=9009 node --test test/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongodb": "^4.8.0"
+  }
+}
