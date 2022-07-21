@@ -1,4 +1,5 @@
 import { getDB, connectDB } from "../dBConn.js";
+import { createCharacter } from "../useCases/useCharacter.js";
 
 connectDB()
 
@@ -7,6 +8,12 @@ async function getCharacters() {
     return(snapshot)
 }
 
+async function makeCharacter(valuesObj){
+    const character = createCharacter({})
+    return(character)
+}
+
 export {
-    getCharacters
+    getCharacters,
+    makeCharacter
 }
