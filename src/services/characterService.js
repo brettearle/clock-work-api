@@ -9,7 +9,7 @@ async function getCharacters() {
 }
 
 async function makeCharacter(valuesObj){
-    const character = createCharacter({})
+    const character = await createCharacter(valuesObj)
     return(character)
 }
 

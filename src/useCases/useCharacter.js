@@ -1,8 +1,9 @@
 import Character from '../entity/character.js'
 
 
-function createCharacter(obj) {
-  return (new Character({...obj}))
+const createCharacter = async (obj) => {
+  const character = new Character({...obj})
+  return character
 }
 
 export { createCharacter }
