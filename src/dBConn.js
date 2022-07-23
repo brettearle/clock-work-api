@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 import env from 'dotenv'
 env.config()
 
@@ -17,7 +17,12 @@ function getDB(){
     return mongodb
 }
 
+function MongoObjectID(id){
+    return ObjectId(id)
+}
+
 export {
     connectDB,
-    getDB
+    getDB,
+    MongoObjectID
 }

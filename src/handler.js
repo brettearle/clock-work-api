@@ -23,7 +23,7 @@ function handler(req, res){
         pathname
     } = parse(url, true)
 
-    const key = `${pathname}:${method.toLowerCase()}`
+    const key =  `${pathname}:${method.toLowerCase()}`
     const chosen = allRoutes[key] || allRoutes.default
     return Promise.resolve(chosen(req, res)).catch(handleError(res))  
 }

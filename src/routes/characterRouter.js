@@ -1,5 +1,6 @@
-import { getCharacters, makeCharacter } from '../services/characterService.js'
+import { getCharacters, makeCharacter, getCharacterById } from '../services/characterService.js'
 import bodyParse from '../utils/bodyParse.js'
+
 
 const routes = {
     '/characters:get': async function (req, res) {
@@ -8,16 +9,23 @@ const routes = {
         return res.end()
     },
     '/characters:post': async function (req, res){
-        const chunks = []
-        await req.on('data', (chunk) => {
-            chunks.push(chunk)
-        })
-        const bodyObj = bodyParse(chunks)
-        const character = await makeCharacter(bodyObj)
+        const bodyObj = await bodyParse(req)
+        const data = JSON.parse(bodyObj)
+        console.log('JSON: ', data)
+        const character = await makeCharacter(data)
         res.writeHead(201, { 'content-type': 'application/json' })
         res.write(JSON.stringify(character))
         return res.end()
-    }
+    },
+    '/characters/getone/byid:get': async function (req, res) {
+        const url = req.url.split("?")
+        const query = url[1]
+        const params = new URLSearchParams(query)
+        const id = params.get("id")
+        const response = await getCharacterById(id)
+        res.write(JSON.stringify(response))
+        return res.end()
+    },
 }
 
 export default routes
