@@ -3,26 +3,22 @@ import env from 'dotenv'
 env.config()
 
 const url = process.env.DB_URI
-let mongodb;
+let mongodb
 
-function connectDB(){
-    MongoClient.connect(url, (err, client)=>{
-        if (err) throw err
-        mongodb = client.db('clock-work-gates')
-        console.log("connected to DB")
-    })
+function connectDB () {
+  MongoClient.connect(url, (err, client) => {
+    if (err) throw err
+    mongodb = client.db('clock-work-gates')
+    console.log('connected to DB')
+  })
 }
 
-function getDB(){
-    return mongodb
+function getDB () {
+  return mongodb
 }
 
-function MongoObjectID(id){
-    return ObjectId(id)
+function MongoObjectID (id) {
+  return ObjectId(id)
 }
 
-export {
-    connectDB,
-    getDB,
-    MongoObjectID
-}
+export { connectDB, getDB, MongoObjectID }
