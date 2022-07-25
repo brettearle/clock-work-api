@@ -37,4 +37,13 @@ async function updateCharacterById (id, data) {
   return character.value
 }
 
-export { getCharacters, makeCharacter, getCharacterById, updateCharacterById }
+async function deleteCharacter (id) {
+    const character = await getDB()
+      .collection('npc')
+      .deleteOne(
+        { _id: MongoObjectID(id) },
+      )
+    return character
+  }
+
+export { getCharacters, makeCharacter, getCharacterById, updateCharacterById, deleteCharacter }

@@ -2,6 +2,7 @@ export default class Character {
   constructor ({
     firstName = '',
     lastName = '',
+    goByName = '',
     age = 0,
     description = '',
     highConcept = '',
@@ -35,10 +36,12 @@ export default class Character {
       { name: 'communication', value: 0 },
       { name: 'manipulation', value: 0 },
       { name: 'empathy', value: 0 }
-    ]
+    ],
+    notes = ""
   }) {
     this.firstName = firstName
     this.lastName = lastName
+    this.goByName = goByName
     this.age = age
     this.description = description
     this.highConcept = highConcept
@@ -55,5 +58,6 @@ export default class Character {
     this.hasExtraMildConsequence = hasExtraMildConsequence
     this.extraMildConsequence = extraMildConsequence
     this.skills = skills
+    this.notes = notes
   }
 }

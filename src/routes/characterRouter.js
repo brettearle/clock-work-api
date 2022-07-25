@@ -2,7 +2,8 @@ import {
   getCharacters,
   makeCharacter,
   getCharacterById,
-  updateCharacterById
+  updateCharacterById,
+  deleteCharacter
 } from '../services/characterService.js'
 import bodyParse from '../utils/bodyParse.js'
 
@@ -40,6 +41,16 @@ const routes = {
     const bodyObj = await bodyParse(req)
     const data = JSON.parse(bodyObj)
     const response = await updateCharacterById(id, data)
+    res.writeHead(201, { 'content-type': 'application/json' })
+    res.write(JSON.stringify(response))
+    return res.end()
+  },
+  '/characters/deleteone:delete': async function (req, res) {
+    const url = req.url.split('?')
+    const query = url[1]
+    const params = new URLSearchParams(query)
+    const id = params.get('id')
+    const response = deleteCharacter(id)
     res.writeHead(201, { 'content-type': 'application/json' })
     res.write(JSON.stringify(response))
     return res.end()
