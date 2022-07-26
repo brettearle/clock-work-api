@@ -1,5 +1,6 @@
 import { parse } from 'node:url'
 import characterRouter from './routes/characterRouter.js'
+import defaultHeader from './utils/defaultHeader.js'
 
 const characterRoutes = characterRouter
 
@@ -7,7 +8,7 @@ const allRoutes = {
   ...characterRoutes,
   //404 routes
   default: (req, res) => {
-    res.writeHead(404, { 'content-type': 'application/json' }) //write head comes before other things
+    res.writeHead(404, defaultHeader) //write head comes before other things
     res.write('404 not found!')
     res.end()
   }

@@ -11,7 +11,7 @@ import defaultHeader from '../utils/defaultHeader.js'
 const routes = {
   '/characters:get': async function (req, res) {
     const response = await getCharacters()
-    res.writeHead(201, defaultHeader)
+    res.writeHead(200, defaultHeader)
     res.write(JSON.stringify({ results: response }))
     return res.end()
   },
@@ -30,7 +30,7 @@ const routes = {
     const params = new URLSearchParams(query)
     const id = params.get('id')
     const response = await getCharacterById(id)
-    res.writeHead(201, defaultHeader)
+    res.writeHead(200, defaultHeader)
     res.write(JSON.stringify(response))
     return res.end()
   },

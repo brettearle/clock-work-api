@@ -4,4 +4,4 @@ const defaultHeader = {
     "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept" // REQUIRED CORS HEADER
 }
 
-export default {defaultHeader}
+export default defaultHeader
