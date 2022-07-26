@@ -20,7 +20,19 @@ function handler (req, res) {
 
   const key = `${pathname}:${method.toLowerCase()}`
   const chosen = allRoutes[key] || allRoutes.default
-  return Promise.resolve(chosen(req, res)).catch(handleError(res))
+  return Promise.resolve(
+    method.toLowerCase() === 'options' ? handleOptions(req, res) : chosen(req, res)
+  ).catch(handleError(res))
+}
+
+function handleOptions (req, res) {
+  res.writeHead(200, {
+    'Access-Control-Allow-Origin': '*', // REQUIRED CORS HEADER
+    'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT, PATCH', // REQUIRED CORS HEADER
+    'Access-Control-Allow-Headers':
+      'Origin, X-Requested-With, Content-Type, Accept' // REQUIRED CORS HEADER
+  })
+  return res.end()
 }
 
 function handleError (response) {
